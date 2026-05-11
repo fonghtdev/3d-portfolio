@@ -189,6 +189,11 @@
 
 .work-image-in {
   position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 560px;
+  max-height: 400px;
 }
 
 .work-link {
@@ -228,8 +233,11 @@
 }
 
 .work-image img {
+  display: block;
   max-width: 100%;
   max-height: 400px;
+  width: auto;
+  height: auto;
   border-radius: 8px;
 }
 
@@ -323,6 +331,10 @@
 
   .carousel-slide {
     padding: 30px 0;
+  }
+
+  .work-image-in {
+    max-height: 250px;
   }
 
   .work-image img {

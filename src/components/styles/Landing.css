@@ -205,6 +205,63 @@
   z-index: 9;
 }
 
+.slow-scroll-notice {
+  position: fixed;
+  right: 26px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 13;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--accentColor);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.slow-scroll-icon {
+  width: 18px;
+  height: 30px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  position: relative;
+}
+
+.slow-scroll-wheel {
+  width: 3px;
+  height: 6px;
+  border-radius: 999px;
+  background-color: currentColor;
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: slowScrollWheel 1.4s ease-in-out infinite;
+}
+
+@keyframes slowScrollWheel {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 12px);
+  }
+}
+
 .landing-info h3 {
   font-size: 22px;
   letter-spacing: 2px;
@@ -228,9 +285,18 @@
   letter-spacing: 2px;
 }
 
+.landing-h2-info,
+.landing-h2-info-1,
+.landing-h2-1,
+.landing-h2-2 {
+  display: block;
+  white-space: nowrap;
+}
+
 .landing-h2-info-1 {
   position: absolute;
   top: 0;
+  left: 0;
 }
 
 h2.landing-info-h2 {
@@ -247,6 +313,7 @@ h2.landing-info-h2 {
 .landing-h2-2 {
   position: absolute;
   top: 0;
+  left: 0;
 }
 
 .landing-info-h2::after {
@@ -291,6 +358,19 @@ h2.landing-info-h2 {
 
   h2.landing-info-h2 {
     font-size: 38px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .slow-scroll-notice {
+    right: 14px;
+    font-size: 9px;
+    gap: 9px;
+  }
+
+  .slow-scroll-icon {
+    width: 16px;
+    height: 27px;
   }
 }
 

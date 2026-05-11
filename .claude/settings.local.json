@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(node -e \"const fs=require\\('fs'\\);const crypto=require\\('crypto'\\);const encrypted=fs.readFileSync\\('public/models/character.enc'\\);const iv=encrypted.subarray\\(0,16\\);const data=encrypted.subarray\\(16\\);const key=crypto.createHash\\('sha256'\\).update\\('MyCharacter12'\\).digest\\(\\).subarray\\(0,32\\);const decipher=crypto.createDecipheriv\\('aes-256-cbc',key,iv\\);const decrypted=Buffer.concat\\([decipher.update\\(data\\),decipher.final\\(\\)]\\);const jsonLen=decrypted.readUInt32LE\\(12\\);const json=JSON.parse\\(decrypted.subarray\\(20,20+jsonLen\\).toString\\('utf8'\\)\\);for\\(const [i,n] of \\(json.nodes||[]\\).entries\\(\\)\\){if\\(['CAP.001','CAP.002','Face.002','Ear.001','Neck','Hand','BODY.SHIRT','Hair'].includes\\(n.name\\)\\){console.log\\(i, JSON.stringify\\(n\\)\\);}}\")"
+    ]
+  }
+}

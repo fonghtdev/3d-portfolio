@@ -1,13 +1,10 @@
-import {
-  FaGithub,
-  FaInstagram,
-  FaLinkedinIn,
-  FaYoutube,
-} from "react-icons/fa6";
-import "./styles/SocialIcons.css";
-import { TbNotes } from "react-icons/tb";
 import { useEffect } from "react";
+import {
+  FaGithub
+} from "react-icons/fa6";
+import { TbNotes } from "react-icons/tb";
 import HoverLinks from "./HoverLinks";
+import "./styles/SocialIcons.css";
 
 const SocialIcons = () => {
   useEffect(() => {
@@ -61,14 +58,14 @@ const SocialIcons = () => {
       <div className="social-icons" data-cursor="icons" id="social">
         <span>
           <a
-            href="https://github.com/akashrmalhotra"
+            href="https://github.com/fonghtdev"
             target="_blank"
             rel="noreferrer"
           >
             <FaGithub />
           </a>
         </span>
-        <span>
+        {/* <span>
           <a
             href="https://www.linkedin.com/in/akashrmalhotra/"
             target="_blank"
@@ -94,11 +91,11 @@ const SocialIcons = () => {
           >
             <FaInstagram />
           </a>
-        </span>
+        </span> */}
       </div>
       <a
         className="resume-button"
-        href="/Akash_Malhotra.pdf"
+        href="/HoThePhongResume.pdf"
         target="_blank"
         rel="noreferrer"
       >

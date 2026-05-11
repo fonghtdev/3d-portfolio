@@ -1,36 +1,29 @@
-import { useState, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
-import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 const projects = [
   {
-    title: "CallHQ",
-    category: "Voice AI Calling Platform",
-    tools: "Voice AI, Calling Automation, CRM Integrations",
-    image: "/images/callhq.png",
-    link: "https://callhq.ai",
+    title: "CompassEd",
+    descriptions: "AI-powered online learning platform",
+    techs: "Java, Spring Boot, MySQL, RESTful API",
+    image: "/images/CompassEd-Landing.png",
+    link: "https://github.com/fonghtdev/CompassEd",
   },
   {
-    title: "Whatsapp Automation",
-    category: "WABA Application",
-    tools: "WhatsApp Business API, Workflow Automation, Notifications",
-    image: "/images/whatsapp.png",
-    link: "https://whatsapp.callhq.ai",
+    title: "Task Management System",
+    descriptions: " Real-time task management system",
+    techs: "ASP.NET Core, SignalR, Entity Framework, SQL Server",
+    image: "/images/TaskManagement.png",
+    link: "https://github.com/fonghtdev/Gr4_PRN222_TaskManagementSystem",
   },
   {
-    title: "Broki",
-    category: "Real Estate Platform for FnB Industry",
-    tools: "Property Discovery, Lead Management, Marketplace Workflows",
-    image: "/images/broki.png",
-    link: "https://broki.in",
-  },
-  {
-    title: "Orrdr.com",
-    category: "Ecommerce Platform and Mobile App",
-    tools: "Ecommerce, Mobile Experience, Order Management",
-    image: "/images/orrdr.png",
-    link: "https://orrdr.com",
+    title: "Movie Ticket Booking System",
+    descriptions: "Online platform for booking movie tickets and managing showtimes",
+    techs: "Java Spring Boot MVC, Spring Data JPA/Hibernate, SQL Server",
+    image: "/images/MovieLanding.png",
+    link: "https://github.com/fonghtdev/MovieTicketManager",
   },
 ];
 
@@ -60,11 +53,17 @@ const Work = () => {
     goToSlide(newIndex);
   }, [currentIndex, goToSlide]);
 
+  useEffect(() => {
+    const slideInterval = window.setInterval(goToNext, 6000);
+
+    return () => window.clearInterval(slideInterval);
+  }, [goToNext]);
+
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">
         <h2>
-          My <span>Work</span>
+          Some Of My <span>Project</span>
         </h2>
 
         <div className="carousel-wrapper">
@@ -104,11 +103,11 @@ const Work = () => {
                       <div className="carousel-details">
                         <h4>{project.title}</h4>
                         <p className="carousel-category">
-                          {project.category}
+                          {project.descriptions}
                         </p>
                         <div className="carousel-tools">
-                          <span className="tools-label">Tools & Features</span>
-                          <p>{project.tools}</p>
+                          <span className="tools-label">Technologies</span>
+                          <p>{project.techs}</p>
                         </div>
                       </div>
                     </div>

@@ -34,6 +34,18 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       <Cursor />
       <Navbar />
       <SocialIcons />
+      <div className="slow-scroll-notice" aria-label="Slow scroll down">
+        <span>
+          slow
+          <br />
+          scroll
+          <br />
+          down
+        </span>
+        <div className="slow-scroll-icon" aria-hidden="true">
+          <div className="slow-scroll-wheel"></div>
+        </div>
+      </div>
       {isDesktopView && children}
       <div id="smooth-wrapper">
         <div id="smooth-content">

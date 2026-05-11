@@ -52,14 +52,14 @@
 
 .what-noTouch:hover,
 .what-content-active {
-  min-height: 67%;
-  padding: 40px 50px;
+  min-height: 75%;
+  padding: 32px 50px;
 }
 
 .what-noTouch:hover ~ .what-content,
 .what-box-in:hover .what-noTouch:not(:hover),
 .what-content.what-sibling {
-  min-height: 33%;
+  min-height: 25%;
   padding: 10px 50px;
 }
 .what-content h3 {
@@ -69,9 +69,10 @@
 }
 .what-content p {
   font-size: 14px;
-  line-height: 18px;
+  line-height: 17px;
   font-weight: 200;
   letter-spacing: 0.7px;
+  margin: 8px 0;
 }
 .what-content h4 {
   font-weight: 300;
@@ -214,7 +215,7 @@
   font-size: 12px;
   letter-spacing: 1px;
   font-family: "Geist", sans-serif;
-  margin-bottom: 5px;
+  margin: 8px 0 5px;
 }
 @keyframes whatBorders {
   80% {

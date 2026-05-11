@@ -8,7 +8,7 @@ const Contact = () => {
         <h3>Contact</h3>
         <div className="contact-flex">
           <div className="contact-box">
-            <h4>Connect</h4>
+            {/* <h4>Connect</h4>
             <p>
               <a
                 href="https://www.linkedin.com/in/akashrmalhotra/"
@@ -18,20 +18,16 @@ const Contact = () => {
               >
                 LinkedIn — akashrmalhotra
               </a>
-            </p>
+            </p> */}
             <h4>Education</h4>
             <p>
-              PGPWE (MBA), Indian Institute of Management, Lucknow — 2021–2023
-            </p>
-            <p>
-              B.Tech Computer Science, Manav Rachna Educational Institutions —
-              2009–2013
+              FPT University, Hanoi, Vietnam, 2021-2026
             </p>
           </div>
           <div className="contact-box">
             <h4>Social</h4>
             <a
-              href="https://github.com/akashrmalhotra"
+              href="https://github.com/fonghtdev"
               target="_blank"
               rel="noreferrer"
               data-cursor="disable"
@@ -39,7 +35,7 @@ const Contact = () => {
             >
               GitHub <MdArrowOutward />
             </a>
-            <a
+            {/* <a
               href="https://www.linkedin.com/in/akashrmalhotra/"
               target="_blank"
               rel="noreferrer"
@@ -47,8 +43,8 @@ const Contact = () => {
               className="contact-social"
             >
               LinkedIn <MdArrowOutward />
-            </a>
-            <a
+            </a> */}
+            {/* <a
               href="https://www.youtube.com/@Leftbraincoder"
               target="_blank"
               rel="noreferrer"
@@ -65,11 +61,11 @@ const Contact = () => {
               className="contact-social"
             >
               Instagram <MdArrowOutward />
-            </a>
+            </a> */}
           </div>
           <div className="contact-box">
             <h2>
-              Designed and Developed <br /> by <span>Akash Malhotra</span>
+              Designed and Developed <br /> by <span>fonght.dev</span>
             </h2>
             <h5>
               <MdCopyright /> 2026

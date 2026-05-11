@@ -11,7 +11,6 @@ import {
   handleTouchMove,
 } from "./utils/mouseUtils";
 import setAnimations from "./utils/animationUtils";
-import { setProgress } from "../Loading";
 
 const Scene = () => {
   const canvasDiv = useRef<HTMLDivElement | null>(null);
@@ -46,33 +45,39 @@ const Scene = () => {
       let headBone: THREE.Object3D | null = null;
       let screenLight: any | null = null;
       let mixer: THREE.AnimationMixer;
+      let character: THREE.Object3D | null = null;
+      let isDisposed = false;
+      let animationFrame = 0;
 
       const clock = new THREE.Clock();
 
       const light = setLighting(scene);
-      let progress = setProgress((value) => setLoading(value));
-      const { loadCharacter } = setCharacter(renderer, scene, camera);
+      const { loadCharacter } = setCharacter(renderer, scene, camera, (value) => {
+        if (!isDisposed) setLoading(value);
+      });
+
+      const onResize = () => {
+        if (character) handleResize(renderer, camera, canvasDiv, character);
+      };
 
       loadCharacter().then((gltf) => {
-        if (gltf) {
-          const animations = setAnimations(gltf);
-          hoverDivRef.current && animations.hover(gltf, hoverDivRef.current);
-          mixer = animations.mixer;
-          let character = gltf.scene;
-          setChar(character);
-          scene.add(character);
-          headBone = character.getObjectByName("spine006") || null;
-          screenLight = character.getObjectByName("screenlight") || null;
-          progress.loaded().then(() => {
-            setTimeout(() => {
-              light.turnOnLights();
-              animations.startIntro();
-            }, 2500);
-          });
-          window.addEventListener("resize", () =>
-            handleResize(renderer, camera, canvasDiv, character)
-          );
-        }
+        if (!gltf || isDisposed) return;
+
+        const animations = setAnimations(gltf);
+        hoverDivRef.current && animations.hover(gltf, hoverDivRef.current);
+        mixer = animations.mixer;
+        character = gltf.scene;
+        setChar(character);
+        scene.add(character);
+        headBone = character.getObjectByName("spine006") || null;
+        screenLight = character.getObjectByName("screenlight") || null;
+        setLoading(100);
+        setTimeout(() => {
+          if (isDisposed) return;
+          light.turnOnLights();
+          animations.startIntro();
+        }, 2500);
+        window.addEventListener("resize", onResize);
       });
 
       let mouse = { x: 0, y: 0 },
@@ -98,16 +103,16 @@ const Scene = () => {
         });
       };
 
-      document.addEventListener("mousemove", (event) => {
-        onMouseMove(event);
-      });
+      document.addEventListener("mousemove", onMouseMove);
       const landingDiv = document.getElementById("landingDiv");
       if (landingDiv) {
         landingDiv.addEventListener("touchstart", onTouchStart);
         landingDiv.addEventListener("touchend", onTouchEnd);
       }
       const animate = () => {
-        requestAnimationFrame(animate);
+        if (isDisposed) return;
+
+        animationFrame = requestAnimationFrame(animate);
         if (headBone) {
           handleHeadRotation(
             headBone,
@@ -127,17 +132,17 @@ const Scene = () => {
       };
       animate();
       return () => {
+        isDisposed = true;
         clearTimeout(debounce);
+        cancelAnimationFrame(animationFrame);
         scene.clear();
         renderer.dispose();
-        window.removeEventListener("resize", () =>
-          handleResize(renderer, camera, canvasDiv, character!)
-        );
-        if (canvasDiv.current) {
+        window.removeEventListener("resize", onResize);
+        document.removeEventListener("mousemove", onMouseMove);
+        if (canvasDiv.current?.contains(renderer.domElement)) {
           canvasDiv.current.removeChild(renderer.domElement);
         }
         if (landingDiv) {
-          document.removeEventListener("mousemove", onMouseMove);
           landingDiv.removeEventListener("touchstart", onTouchStart);
           landingDiv.removeEventListener("touchend", onTouchEnd);
         }
