@@ -2,9 +2,6 @@
 
 This repository contains the source code for a personal 3D portfolio built with React, TypeScript, Three.js, React Three Fiber, and GSAP. It includes animated page sections, a character scene, custom cursor interactions, and smooth transitions designed for a modern portfolio experience.
 
-Live site: [https://akashrmalhotra.netlify.app/](https://akashrmalhotra.netlify.app/)
-
-![Portfolio Preview](public/images/preview1.png)
 
 ## Table of Contents
 
@@ -110,16 +107,16 @@ Live site: [https://akashrmalhotra.netlify.app/](https://akashrmalhotra.netlify.
 
 ## Available Scripts
 
-- `npm run dev`  
+- `npm run dev`
   Starts Vite dev server and exposes host for local network testing.
 
-- `npm run build`  
+- `npm run build`
   Type-checks and builds a production-ready bundle.
 
-- `npm run preview`  
+- `npm run preview`
   Serves the production build locally for verification.
 
-- `npm run lint`  
+- `npm run lint`
   Runs ESLint checks across the project.
 
 ## GSAP License Note
@@ -143,16 +140,16 @@ You can adapt this portfolio to your own profile by updating the following areas
 
 ## Troubleshooting
 
-- **Blank screen in development**  
+- **Blank screen in development**
   Check browser console for module import errors and verify all dependencies are installed.
 
-- **3D performance issues on low-end devices**  
+- **3D performance issues on low-end devices**
   Reduce scene complexity and post-processing effects in the character/scene utilities.
 
-- **GSAP plugin errors**  
+- **GSAP plugin errors**
   Ensure you have the correct plugin package and license configuration for your target environment.
 
-- **TypeScript build failures**  
+- **TypeScript build failures**
   Run `npm run build` and address reported type errors before deploying.
 
 ## Deployment
