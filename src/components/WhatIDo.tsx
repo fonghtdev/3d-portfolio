@@ -90,18 +90,17 @@ const WhatIDo = () => {
               <h3>FULL STACK DEVELOPMENT</h3>
               <h4>Building Modern Web Applications</h4>
               <p>
-                Full Stack Developer focused on creating scalable, responsive, and
-                user-focused web applications through real-world projects and collaborative
-                development environments.
+                Full-stack developer working across React admin dashboards and
+                Flutter mobile apps, with ESLint/Prettier and Husky hooks for
+                consistent code quality.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
                 <div className="what-tags">React</div>
                 <div className="what-tags">TypeScript</div>
                 <div className="what-tags">JavaScript</div>
-                <div className="what-tags">Responsive UI</div>
-                <div className="what-tags">RESTful APIs</div>
-                <div className="what-tags">Frontend Architecture</div>
+                <div className="what-tags">TailwindCSS</div>
+                <div className="what-tags">Flutter</div>
               </div>
               <div className="what-arrow"></div>
             </div>
@@ -128,19 +127,22 @@ const WhatIDo = () => {
               <h3>BACKEND & SYSTEMS</h3>
               <h4>Developing Scalable Backend Solutions</h4>
               <p>
-                Building backend systems, APIs, and database-driven applications with a
-                strong focus on clean architecture, performance, and maintainable code for
-                production-ready software.
+                Building secure REST APIs with JWT and role-based access, Redis/Bull
+                job queues, scheduled jobs and FCM push notifications on Clean
+                Architecture backends.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
+                <div className="what-tags">NestJS</div>
                 <div className="what-tags">Spring Boot</div>
-                <div className="what-tags">ASP.NET Core</div>
                 <div className="what-tags">Node.js</div>
+                <div className="what-tags">PostgreSQL</div>
                 <div className="what-tags">MySQL</div>
-                <div className="what-tags">SQL Server</div>
-                <div className="what-tags">Git & GitHub</div>
-                <div className="what-tags">Testing</div>
+                <div className="what-tags">MSSQL</div>
+                <div className="what-tags">Redis</div>
+                <div className="what-tags">Docker</div>
+                <div className="what-tags">TypeORM</div>
+                <div className="what-tags">Git</div>
               </div>
               <div className="what-arrow"></div>
             </div>

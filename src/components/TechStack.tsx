@@ -12,54 +12,31 @@ import {
 } from "@react-three/rapier";
 
 const textureLoader = new THREE.TextureLoader();
-type LogoName =
-  | "java"
-  | "csharp"
-  | "html"
-  | "css"
-  | "git"
-  | "github"
-  | "spring"
-  | "sqlserver";
+type BadgeName =
+  | "nestjs"
+  | "postgresql"
+  | "redis"
+  | "docker"
+  | "flutter"
+  | "tailwind"
+  | "firebase";
+type LogoName = "java" | "git" | "spring" | "sqlserver" | BadgeName;
+
+const BADGES: Record<BadgeName, { color: string; label: string; size: number }> = {
+  nestjs: { color: "#e0234e", label: "Nest", size: 46 },
+  postgresql: { color: "#336791", label: "Postgres", size: 34 },
+  redis: { color: "#d82c20", label: "Redis", size: 46 },
+  docker: { color: "#2496ed", label: "Docker", size: 38 },
+  flutter: { color: "#02569b", label: "Flutter", size: 38 },
+  tailwind: { color: "#06b6d4", label: "Tailwind", size: 30 },
+  firebase: { color: "#f57c00", label: "Firebase", size: 32 },
+};
 
 type TechItem = {
   name: string;
   scale: number;
   texture: THREE.Texture;
   position: [number, number, number];
-};
-
-const drawShieldLogo = (
-  context: CanvasRenderingContext2D,
-  primary: string,
-  secondary: string,
-  label: string
-) => {
-  context.beginPath();
-  context.moveTo(128, 52);
-  context.lineTo(196, 68);
-  context.lineTo(184, 184);
-  context.lineTo(128, 216);
-  context.lineTo(72, 184);
-  context.lineTo(60, 68);
-  context.closePath();
-  context.fillStyle = primary;
-  context.fill();
-
-  context.beginPath();
-  context.moveTo(128, 70);
-  context.lineTo(178, 82);
-  context.lineTo(169, 172);
-  context.lineTo(128, 196);
-  context.closePath();
-  context.fillStyle = secondary;
-  context.fill();
-
-  context.fillStyle = "#ffffff";
-  context.font = "800 54px Arial, Helvetica, sans-serif";
-  context.textAlign = "center";
-  context.textBaseline = "middle";
-  context.fillText(label, 128, 134);
 };
 
 const drawTechLogo = (context: CanvasRenderingContext2D, logo: LogoName) => {
@@ -90,37 +67,6 @@ const drawTechLogo = (context: CanvasRenderingContext2D, logo: LogoName) => {
     context.font = "800 27px Arial, Helvetica, sans-serif";
     context.fillStyle = "#334155";
     context.fillText("JAVA", 128, 232);
-    return;
-  }
-
-  if (logo === "csharp") {
-    context.fillStyle = "#9b4fbc";
-    context.beginPath();
-    for (let i = 0; i < 6; i++) {
-      const angle = Math.PI / 6 + i * (Math.PI / 3);
-      const x = 128 + Math.cos(angle) * 82;
-      const y = 128 + Math.sin(angle) * 82;
-      if (i === 0) context.moveTo(x, y);
-      else context.lineTo(x, y);
-    }
-    context.closePath();
-    context.fill();
-    context.fillStyle = "#ffffff";
-    context.font = "800 90px Arial, Helvetica, sans-serif";
-    context.fillText("C", 101, 142);
-    context.font = "800 48px Arial, Helvetica, sans-serif";
-    context.fillText("#", 164, 112);
-    context.fillText("#", 164, 166);
-    return;
-  }
-
-  if (logo === "html") {
-    drawShieldLogo(context, "#e34f26", "#f06529", "HTML");
-    return;
-  }
-
-  if (logo === "css") {
-    drawShieldLogo(context, "#1572b6", "#33a9dc", "CSS");
     return;
   }
 
@@ -200,13 +146,14 @@ const drawTechLogo = (context: CanvasRenderingContext2D, logo: LogoName) => {
     return;
   }
 
-  context.fillStyle = "#181717";
+  const badge = BADGES[logo as BadgeName];
+  context.fillStyle = badge.color;
   context.beginPath();
   context.arc(128, 128, 82, 0, Math.PI * 2);
   context.fill();
   context.fillStyle = "#ffffff";
-  context.font = "800 34px Arial, Helvetica, sans-serif";
-  context.fillText("GitHub", 128, 132);
+  context.font = `800 ${badge.size}px Arial, Helvetica, sans-serif`;
+  context.fillText(badge.label, 128, 132);
 };
 
 const createLogoTexture = (logo: LogoName) => {
@@ -228,20 +175,21 @@ const createLogoTexture = (logo: LogoName) => {
 
 const techItems: TechItem[] = [
   { name: "React", texture: textureLoader.load("/images/react2.webp"), scale: 1, position: [-7, 1, -5] },
-  { name: "Next", texture: textureLoader.load("/images/next2.webp"), scale: 0.9, position: [-4.6, 2.7, -7] },
   { name: "Node", texture: textureLoader.load("/images/node2.webp"), scale: 1, position: [-2.2, 1.1, -4] },
-  { name: "Mongo", texture: textureLoader.load("/images/mongo.webp"), scale: 1, position: [2.5, 1, -5] },
   { name: "MySQL", texture: textureLoader.load("/images/mysql.webp"), scale: 0.92, position: [5, 2.4, -7] },
   { name: "SQLServer", texture: createLogoTexture("sqlserver"), scale: 0.9, position: [6.8, -0.9, -6.4] },
   { name: "TypeScript", texture: textureLoader.load("/images/typescript.webp"), scale: 1, position: [7.2, 0.9, -4.8] },
   { name: "JavaScript", texture: textureLoader.load("/images/javascript.webp"), scale: 0.9, position: [-5.6, -1.4, -3] },
   { name: "Java", texture: createLogoTexture("java"), scale: 0.92, position: [-3.2, -2.8, -5.5] },
   { name: "SpringBoot", texture: createLogoTexture("spring"), scale: 0.92, position: [-1.4, -3.6, -6.8] },
-  { name: "CSharp", texture: createLogoTexture("csharp"), scale: 0.9, position: [-0.8, -1.2, -3.8] },
-  { name: "HTML", texture: createLogoTexture("html"), scale: 0.92, position: [1.6, -2.8, -5.6] },
-  { name: "CSS", texture: createLogoTexture("css"), scale: 0.9, position: [4, -1.4, -3.2] },
   { name: "Git", texture: createLogoTexture("git"), scale: 0.86, position: [6.2, -2.7, -5.5] },
-  { name: "GitHub", texture: createLogoTexture("github"), scale: 0.9, position: [0, -4.4, -7] },
+  { name: "NestJS", texture: createLogoTexture("nestjs"), scale: 0.95, position: [-4.6, 2.7, -7] },
+  { name: "PostgreSQL", texture: createLogoTexture("postgresql"), scale: 0.95, position: [2.5, 1, -5] },
+  { name: "Redis", texture: createLogoTexture("redis"), scale: 0.9, position: [-0.8, -1.2, -3.8] },
+  { name: "Docker", texture: createLogoTexture("docker"), scale: 0.92, position: [1.6, -2.8, -5.6] },
+  { name: "Flutter", texture: createLogoTexture("flutter"), scale: 0.92, position: [4, -1.4, -3.2] },
+  { name: "Tailwind", texture: createLogoTexture("tailwind"), scale: 0.9, position: [0, -4.4, -7] },
+  { name: "Firebase", texture: createLogoTexture("firebase"), scale: 0.9, position: [0.5, 3.2, -6] },
 ];
 
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);

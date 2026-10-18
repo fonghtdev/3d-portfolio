@@ -33,17 +33,17 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Full Stack Developer</h4>
+                <h4>Full-Stack Developer</h4>
                 <h5>Smart Lab · FPT University</h5>
               </div>
-              <h3>2023 – Apr 2025</h3>
+              <h3>2024 – 2025</h3>
             </div>
 
             <p>
-              Collaborated with developers to build and maintain modern web
-              applications, focusing on frontend responsiveness, backend
-              development, RESTful APIs, testing, and scalable software
-              solutions in real-world team environments.
+              Developed and tested web application features using Java and
+              Spring Boot in a collaborative team. Contributed to a
+              university-wide USB-based offline examination system using .NET,
+              implementing exam processing, result storage, and bug fixes.
             </p>
           </div>
         </div>

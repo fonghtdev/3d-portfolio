@@ -6,10 +6,10 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          Passionate Full Stack Developer with hands-on experience building modern web applications
-          through collaborative projects and real-world development environments.
-          With a strong focus on creating scalable, user-focused solutions
-          and continuously improving both technical expertise and problem-solving abilities.
+          Software Engineering graduate from FPT University with hands-on full-stack
+          experience in Java (Spring Boot), TypeScript (NestJS, React) and Flutter.
+          I build secure REST APIs, background job queues and push notifications,
+          including a post-operative monitoring system developed with Thanh Nhan Hospital.
         </p>
       </div>
     </div>

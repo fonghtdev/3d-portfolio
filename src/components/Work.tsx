@@ -5,18 +5,27 @@ import WorkImage from "./WorkImage";
 
 const projects = [
   {
+    title: "POMS",
+    descriptions:
+      "Post-Operative Monitoring System, capstone with Thanh Nhan Hospital's ERAS research team",
+    techs: "NestJS, PostgreSQL, Redis, Docker, React, Flutter",
+    image: "/images/placeholder.webp",
+    link: "https://github.com/Su26-SEP490-G57/Su26_SEP490_G57_BE",
+  },
+  {
     title: "CompassEd",
     descriptions: "AI-powered online learning platform",
-    techs: "Java, Spring Boot, MySQL, RESTful API",
+    techs: "Java, Spring Boot, MySQL, Flask, JavaScript, OpenAI API, VNPay, Docker",
     image: "/images/CompassEd-Landing.png",
     link: "https://github.com/fonghtdev/CompassEd",
   },
   {
-    title: "Task Management System",
-    descriptions: " Real-time task management system",
-    techs: "ASP.NET Core, SignalR, Entity Framework, SQL Server",
-    image: "/images/TaskManagement.png",
-    link: "https://github.com/fonghtdev/Gr4_PRN222_TaskManagementSystem",
+    title: "Loop",
+    descriptions:
+      "Real-time community chat app for Windows and macOS with text and voice channels, roles and video calls",
+    techs: "TypeScript, Electron, React, Fastify, Socket.IO, Prisma, PostgreSQL, Redis, LiveKit",
+    image: "/images/Loop.png",
+    link: "https://github.com/fonghtdev/loop",
   },
   {
     title: "Movie Ticket Booking System",
