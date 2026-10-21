@@ -87,12 +87,12 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
 
             <div className="what-content-in">
-              <h3>FULL STACK DEVELOPMENT</h3>
-              <h4>Building Modern Web Applications</h4>
+              <h3>FRONTEND & MOBILE</h3>
+              <h4>Crafting Fast, Maintainable Interfaces</h4>
               <p>
-                Full-stack developer working across React admin dashboards and
-                Flutter mobile apps, with ESLint/Prettier and Husky hooks for
-                consistent code quality.
+                Building responsive web and mobile clients with React, TypeScript and
+                Flutter, consuming typed APIs and keeping the codebase consistent with
+                ESLint, Prettier and Husky.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
@@ -125,11 +125,12 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
             <div className="what-content-in">
               <h3>BACKEND & SYSTEMS</h3>
-              <h4>Developing Scalable Backend Solutions</h4>
+              <h4>Designing Reliable Backend Services</h4>
               <p>
-                Building secure REST APIs with JWT and role-based access, Redis/Bull
-                job queues, scheduled jobs and FCM push notifications on Clean
-                Architecture backends.
+                Designing Clean Architecture services with secure REST APIs (JWT, RBAC),
+                relational data modelling across PostgreSQL, MySQL and SQL Server, and
+                asynchronous workloads on Redis/Bull queues, scheduled jobs and FCM
+                push, containerised with Docker.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
@@ -142,7 +143,6 @@ const WhatIDo = () => {
                 <div className="what-tags">Redis</div>
                 <div className="what-tags">Docker</div>
                 <div className="what-tags">TypeORM</div>
-                <div className="what-tags">Git</div>
               </div>
               <div className="what-arrow"></div>
             </div>

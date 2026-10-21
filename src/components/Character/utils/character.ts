@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { DRACOLoader, GLTF, GLTFLoader } from "three-stdlib";
+import { DRACOLoader, GLTF, GLTFLoader, RoundedBoxGeometry } from "three-stdlib";
 import { setCharTimeline, setAllTimeline } from "../../utils/GsapScroll";
 import { decryptFile } from "./decrypt";
 
@@ -115,61 +115,104 @@ const createAppleLogo = () => {
   return logo;
 };
 
+const createWallpaper = () => {
+  const canvas = document.createElement("canvas");
+  canvas.width = 256;
+  canvas.height = 160;
+  const ctx = canvas.getContext("2d")!;
+  const gradient = ctx.createLinearGradient(0, 0, 256, 160);
+
+  gradient.addColorStop(0, "#5b8cff");
+  gradient.addColorStop(0.55, "#8a5cff");
+  gradient.addColorStop(1, "#ff7ab8");
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, 256, 160);
+  ctx.fillStyle = "rgba(255,255,255,0.85)";
+  ctx.fillRect(0, 0, 256, 7);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+
+  return texture;
+};
+
+const createKeys = (material: THREE.Material) => {
+  const rows = 4;
+  const cols = 12;
+  const keys = new THREE.InstancedMesh(
+    new RoundedBoxGeometry(0.083, 0.014, 0.06, 2, 0.008),
+    material,
+    rows * cols
+  );
+  const matrix = new THREE.Matrix4();
+
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      matrix.setPosition(-0.5 + col * 0.091, 0.108, -0.07 + row * 0.07);
+      keys.setMatrixAt(row * cols + col, matrix);
+    }
+  }
+
+  return keys;
+};
+
 const createMacBook = () => {
   const laptop = new THREE.Group();
   const laptopBody = new THREE.Group();
   const aluminum = new THREE.MeshStandardMaterial({
-    color: "#c9c9c9",
-    metalness: 0.72,
-    roughness: 0.28,
+    color: "#d6d8dc",
+    metalness: 0.85,
+    roughness: 0.22,
   });
   const dark = new THREE.MeshStandardMaterial({
-    color: "#101218",
-    metalness: 0.15,
-    roughness: 0.45,
+    color: "#0b0c10",
+    metalness: 0.2,
+    roughness: 0.4,
   });
   const keyMaterial = new THREE.MeshStandardMaterial({
-    color: "#181a20",
+    color: "#15171c",
     metalness: 0.05,
-    roughness: 0.5,
+    roughness: 0.55,
   });
   const trackpadMaterial = new THREE.MeshStandardMaterial({
-    color: "#b8b8b8",
-    metalness: 0.55,
-    roughness: 0.24,
+    color: "#c4c6ca",
+    metalness: 0.6,
+    roughness: 0.18,
   });
+  const displayMaterial = new THREE.MeshBasicMaterial({ map: createWallpaper() });
 
-  const base = new THREE.Mesh(new THREE.BoxGeometry(1.72, 0.08, 1.05), aluminum);
+  const base = new THREE.Mesh(new RoundedBoxGeometry(1.72, 0.08, 1.05, 4, 0.035), aluminum);
   base.position.y = 0.04;
   laptopBody.add(base);
 
-  const keyboardDeck = new THREE.Mesh(new THREE.BoxGeometry(1.24, 0.012, 0.38), dark);
-  keyboardDeck.position.set(0, 0.09, 0.08);
-  laptopBody.add(keyboardDeck);
+  const keyboardDeck = new THREE.Mesh(new RoundedBoxGeometry(1.24, 0.014, 0.4, 2, 0.006), dark);
+  keyboardDeck.position.set(0, 0.088, 0.06);
+  laptopBody.add(keyboardDeck, createKeys(keyMaterial));
 
-  for (let row = 0; row < 3; row++) {
-    for (let col = 0; col < 10; col++) {
-      const key = new THREE.Mesh(new THREE.BoxGeometry(0.085, 0.012, 0.055), keyMaterial);
-      key.position.set(-0.43 + col * 0.095, 0.105, -0.04 + row * 0.075);
-      laptopBody.add(key);
-    }
-  }
-
-  const trackpad = new THREE.Mesh(new THREE.BoxGeometry(0.56, 0.012, 0.28), trackpadMaterial);
-  trackpad.position.set(0, 0.105, -0.35);
+  const trackpad = new THREE.Mesh(
+    new RoundedBoxGeometry(0.62, 0.012, 0.3, 3, 0.02),
+    trackpadMaterial
+  );
+  trackpad.position.set(0, 0.092, -0.36);
   laptopBody.add(trackpad);
 
   const screen = new THREE.Group();
   screen.position.set(0, 0.62, 0.49);
   screen.rotation.x = -0.14;
 
-  const shell = new THREE.Mesh(new THREE.BoxGeometry(1.72, 1.08, 0.055), aluminum);
-  const display = new THREE.Mesh(new THREE.PlaneGeometry(1.48, 0.86), dark);
+  const shell = new THREE.Mesh(new RoundedBoxGeometry(1.72, 1.08, 0.055, 4, 0.03), aluminum);
+  const bezel = new THREE.Mesh(new THREE.PlaneGeometry(1.64, 1.0), dark);
+  const display = new THREE.Mesh(new THREE.PlaneGeometry(1.52, 0.92), displayMaterial);
+  const notch = new THREE.Mesh(new RoundedBoxGeometry(0.16, 0.035, 0.004, 2, 0.0015), dark);
   const logo = createAppleLogo();
 
-  display.position.z = -0.031;
+  bezel.position.z = -0.0285;
+  bezel.rotation.y = Math.PI;
+  display.position.z = -0.0292;
+  display.rotation.y = Math.PI;
+  notch.position.set(0, 0.452, -0.0295);
   logo.position.z = 0.031;
-  screen.add(shell, display, logo);
+  screen.add(shell, bezel, display, notch, logo);
   laptopBody.add(screen);
 
   const hinge = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 1.42, 24), aluminum);
