@@ -21,7 +21,7 @@ const Contact = () => {
             </p> */}
             <h4>Education</h4>
             <p>
-              FPT University, Hanoi, Vietnam, 2022-2026
+              FPT University, Hanoi, Vietnam
             </p>
           </div>
           <div className="contact-box">

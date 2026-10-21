@@ -36,8 +36,6 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       <SocialIcons />
       <div className="slow-scroll-notice" aria-label="Slow scroll down">
         <span>
-          slow
-          <br />
           scroll
           <br />
           down
