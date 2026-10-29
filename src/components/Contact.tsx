@@ -23,7 +23,7 @@ const Contact = () => {
             <p>
               FPT University, Hanoi, Vietnam
               <br />
-              Bachelor of Software Engineering, 2022–2026 (degree pending)
+              Bachelor of Software Engineering, 2021–2026 (degree pending)
             </p>
           </div>
           <div className="contact-box">
