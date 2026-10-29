@@ -33,7 +33,7 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Full-Stack Developer</h4>
+                <h4>Developer</h4>
                 <h5>Smart Lab · FPT University</h5>
               </div>
               <h3>2024 – 2025</h3>
