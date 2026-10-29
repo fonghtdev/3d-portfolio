@@ -7,7 +7,7 @@ const projects = [
   {
     title: "POMS",
     role:
-      "Implemented triage logic, JWT auth with role-based access, Redis/Bull queues and FCM push notifications in the NestJS backend; contributed to the React admin dashboard and Flutter app.",
+      "Backend-focused full-stack developer on a capstone with Thanh Nhan Hospital's ERAS research team. Built database design, clinical triage with scheduled assessments and alert routing, symptom survey, nurse management and assessment-history APIs with role-based access (NestJS/PostgreSQL), plus Redis/Bull queues, cron jobs and WebSocket real-time alerts. Set up the Flutter and React base projects and contributed to the Head Nurse web dashboard.",
     descriptions:
       "Post-Operative Monitoring System, capstone with Thanh Nhan Hospital's ERAS research team",
     techs: "NestJS, PostgreSQL, Redis, Docker, React, Flutter",
@@ -17,7 +17,7 @@ const projects = [
   {
     title: "CompassEd",
     role:
-      "Built the Spring Boot/MySQL backend (20+ REST APIs, JWT auth, placement tests, learning roadmaps) and integrated the OpenAI API and VNPay (sandbox).",
+      "Built the Spring Boot/MySQL backend (REST APIs, JWT/Google OAuth auth, placement tests, learning roadmaps, mini/final tests with auto-unlock and level promotion) and integrated the OpenAI API and VNPay (sandbox).",
     descriptions: "AI-powered online learning platform",
     techs: "Java, Spring Boot, MySQL, Flask, JavaScript, OpenAI API, VNPay, Docker",
     image: "/images/CompassEd-Landing.png",
