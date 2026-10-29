@@ -108,6 +108,15 @@
   font-size: 15px;
 }
 
+.carousel-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 12px;
+  font-size: 15px;
+  color: var(--accentColor);
+}
+
 .carousel-image-wrapper {
   flex: 1;
   display: flex;

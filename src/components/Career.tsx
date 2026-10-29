@@ -41,9 +41,10 @@ const Career = () => {
 
             <p>
               Developed and tested web application features using Java and
-              Spring Boot in a collaborative team. Contributed to a
-              university-wide USB-based offline examination system using .NET,
-              implementing exam processing, result storage, and bug fixes.
+              Spring Boot in a collaborative team. Participated in building a
+              USB-based exam environment (.NET) for FPT University final exams:
+              a sandboxed firmware/virtual machine running EOS (FPT's online
+              exam software) in isolation to prevent cheating.
             </p>
           </div>
         </div>

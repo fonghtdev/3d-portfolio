@@ -1,19 +1,23 @@
 import { useCallback, useEffect, useState } from "react";
-import { MdArrowBack, MdArrowForward } from "react-icons/md";
+import { MdArrowBack, MdArrowForward, MdArrowOutward } from "react-icons/md";
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
 
 const projects = [
   {
     title: "POMS",
+    role:
+      "Implemented triage logic, JWT auth with role-based access, Redis/Bull queues and FCM push notifications in the NestJS backend; contributed to the React admin dashboard and Flutter app.",
     descriptions:
       "Post-Operative Monitoring System, capstone with Thanh Nhan Hospital's ERAS research team",
     techs: "NestJS, PostgreSQL, Redis, Docker, React, Flutter",
-    image: "/images/placeholder.webp",
+    image: "/images/POMS.jpg",
     link: "https://github.com/Su26-SEP490-G57/Su26_SEP490_G57_BE",
   },
   {
     title: "CompassEd",
+    role:
+      "Built the Spring Boot/MySQL backend (20+ REST APIs, JWT auth, placement tests, learning roadmaps) and integrated the OpenAI API and VNPay (sandbox).",
     descriptions: "AI-powered online learning platform",
     techs: "Java, Spring Boot, MySQL, Flask, JavaScript, OpenAI API, VNPay, Docker",
     image: "/images/CompassEd-Landing.png",
@@ -21,6 +25,8 @@ const projects = [
   },
   {
     title: "Loop",
+    role:
+      "Built the real-time chat backend and desktop client: Socket.IO messaging, role-based permissions with per-channel overrides, and LiveKit voice and video calls.",
     descriptions:
       "Real-time community chat app for Windows and macOS with text and voice channels, roles and video calls",
     techs: "TypeScript, Electron, React, Fastify, Socket.IO, Prisma, PostgreSQL, Redis, LiveKit",
@@ -29,6 +35,8 @@ const projects = [
   },
   {
     title: "Movie Ticket Booking System",
+    role:
+      "Built the ticket-booking flow and showtime management with Spring MVC, Spring Data JPA and SQL Server.",
     descriptions: "Online platform for booking movie tickets and managing showtimes",
     techs: "Java Spring Boot MVC, Spring Data JPA/Hibernate, SQL Server",
     image: "/images/MovieLanding.png",
@@ -114,10 +122,20 @@ const Work = () => {
                         <p className="carousel-category">
                           {project.descriptions}
                         </p>
+                        <p className="carousel-category">{project.role}</p>
                         <div className="carousel-tools">
                           <span className="tools-label">Technologies</span>
                           <p>{project.techs}</p>
                         </div>
+                        <a
+                          className="carousel-github"
+                          href={project.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          data-cursor="disable"
+                        >
+                          GitHub <MdArrowOutward />
+                        </a>
                       </div>
                     </div>
                     <div className="carousel-image-wrapper">
